@@ -1,6 +1,6 @@
 ---
 pageLayout: home
-externalLinkIcon: false
+externalLinkIcon: true
 config:
   -
    type: doc-hero
@@ -8,7 +8,7 @@ config:
       name: Theme Plume
       text: VuePress Next Theme
       tagline: 一个简约易用的，功能丰富的 vuepress 文档&博客 主题
-      image: /img/logo.png
+      image: /logo.png
       actions:
         -
           theme: brand
