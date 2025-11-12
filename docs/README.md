@@ -5,10 +5,10 @@ config:
   -
    type: doc-hero
    hero:
-      name: Theme Plume
-      text: VuePress Next Theme
-      tagline: 一个简约易用的，功能丰富的 vuepress 文档&博客 主题
-      image: ./img/logo.png
+      name: 个人博客，专注学习
+      text: I'm the best.
+      tagline: 自由的灵魂永不困顿于荆棘
+      image: /img/logo.png
       actions:
         -
           theme: brand
@@ -17,5 +17,5 @@ config:
         -
           theme: alt
           text: Github
-          link: https://github.com/pengzhanbo/vuepress-theme-plume
+          link: https://github.com/feiniao-zlh/blog
 ---

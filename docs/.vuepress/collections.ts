@@ -68,5 +68,5 @@ const demoDoc = defineCollection({
  */
 export default defineCollections([
   blog,
-  demoDoc,
+  // demoDoc,
 ])
