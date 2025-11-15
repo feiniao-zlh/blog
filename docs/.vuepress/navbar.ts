@@ -7,13 +7,14 @@
 import { defineNavbarConfig } from 'vuepress-theme-plume'
 
 export default defineNavbarConfig([
-  { text: '首页', link: '/' },
-  { text: '博客', link: '/blog/' },
-  { text: '标签', link: '/blog/tags/' },
+  { text: '首页', link: '/' ,icon: 'material-symbols:home-outline' },
+  { text: '博客', link: '/blog/',icon:'pixelarticons:notes'},
+  // { text: '标签', link: '/blog/tags/' },
   // { text: 'leetcode', link: '/blog/tags/' },
-  { text: '归档', link: '/blog/archives/' },
-  {
-    text: '笔记',
-    items: [{ text: '示例', link: '/demo/README.md' }]
-  },
+  // { text: '归档', link: '/blog/archives/' },
+  { text: '后端', link:'/backend/mysql.md' ,icon:'mdi:server'},
+  // {
+  //   text: '笔记',
+  //   items: [{ text: '示例', link: '/demo/README.md' }]
+  // },
 ])
