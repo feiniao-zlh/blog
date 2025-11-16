@@ -1,11 +1,11 @@
-# 二期小屁孩
+# 全栈学习笔记
+[在线地址](https://blog.eqxph.com/)
 
-The Site is generated using [vuepress](https://vuepress.vuejs.org/) and [vuepress-theme-plume](https://github.com/pengzhanbo/vuepress-theme-plume)
 
 ## Install
 
 ```sh
-pnpm i
+pnpm i  
 ```
 
 ## Usage
