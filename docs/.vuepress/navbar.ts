@@ -12,7 +12,7 @@ export default defineNavbarConfig([
   // { text: '标签', link: '/blog/tags/' },
   // { text: 'leetcode', link: '/blog/tags/' },
   // { text: '归档', link: '/blog/archives/' },
-  { text: '后端', link:'/backend/mysql.md' ,icon:'mdi:server'},
+  { text: '后端', link:'/backend/cache/' ,icon:'mdi:server'},
   // {
   //   text: '笔记',
   //   items: [{ text: '示例', link: '/demo/README.md' }]
