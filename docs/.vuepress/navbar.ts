@@ -11,7 +11,7 @@ export default defineNavbarConfig([
   { text: '博客', link: '/blog/',icon:'pixelarticons:notes'},
   // { text: '标签', link: '/blog/tags/' },
   // { text: 'leetcode', link: '/blog/tags/' },
-  // { text: '归档', link: '/blog/archives/' },
+  { text: '算法', link: '/algorithm/tree/', icon:'hugeicons:algorithm' },
   { text: '后端', link:'/backend/cache/' ,icon:'mdi:server'},
   // {
   //   text: '笔记',
