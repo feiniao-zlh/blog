@@ -69,7 +69,7 @@ const backend = defineCollection({
   // doc 类型，该类型带有侧边栏
   type: 'doc',
   // 文档集合所在目录，相对于 `docs`
-  dir: '后端',
+  dir: 'backend',
   // `dir` 所指向的目录中的所有 markdown 文件，其 permalink 需要以 `linkPrefix` 配置作为前缀
   // 如果 前缀不一致，则无法生成侧边栏。
   // 所以请确保  markdown 文件的 permalink 都以 `linkPrefix` 开头
