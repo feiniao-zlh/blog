@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3b38d83e-7d73-40a2-82ae-c68eaaf0eba1" name="更改" comment="">
+      <change afterPath="$PROJECT_DIR$/docs/blog/others/skip_list.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/.vuepress/config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/docs/.vuepress/config.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/algorithm/tree.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/algorithm/tree.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/backend/database/mysql.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/backend/database/mysql.md" afterDir="false" />
@@ -17,10 +18,17 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/docs/.vuepress/client.ts" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/docs/algorithm/tree.md" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 3
 }</component>
   <component name="ProjectId" id="35NxfpTdPeFE6w1AUcTAkNSfbm4" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="flattenModules" value="true" />
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -86,7 +94,7 @@
       <workItem from="1763807275089" duration="152000" />
       <workItem from="1763807434356" duration="29000" />
       <workItem from="1763807479698" duration="2000" />
-      <workItem from="1763816608350" duration="9832000" />
+      <workItem from="1763816608350" duration="15696000" />
     </task>
     <servers />
   </component>
