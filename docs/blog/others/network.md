@@ -14,8 +14,8 @@ permalink: /blog/network/
 - 同步双方的初始序列号（防止旧数据混入新连接）
 - 防止已失效的连接请求突然生效
 
-==详细过程==
-```ts ts:no-line-numbers :collapsed-lines=5
+:::details ==详细过程==
+```ts ts:no-line-numbers 
 场景：客户端要连接服务器的80端口
 
 第一次握手 - SYN（同步）：
@@ -46,6 +46,7 @@ permalink: /blog/network/
 
 双方状态：ESTABLISHED（连接建立）
 ```
+:::
 
 :::important 两次握手会如何 
 场景：旧的SYN包延迟到达
@@ -76,8 +77,8 @@ permalink: /blog/network/
 - **三次挥手**后服务器可能还有数据要发，不可强制结束
 :::
 
-==详细过程==
-```ts ts:no-line-numbers :collapsed-lines=5
+:::details ==详细过程==
+```ts ts:no-line-numbers
 场景：客户端要关闭连接
 
 第一次挥手 - FIN：
@@ -122,3 +123,4 @@ permalink: /blog/network/
 服务器收到后：CLOSED
 客户端等待后：CLOSED
 ```
+:::

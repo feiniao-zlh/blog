@@ -37,7 +37,9 @@ Redis没有 → 查MySQL → 仍然没有 → 返回空
 2. 查数据库，发现不存在
 3. 在缓存中写入一个空值（如"NULL"），并设置较短的过期时间
 4. 下次请求时，命中空值缓存，直接返回空结果，避免查询数据库
-```go :collapsed-lines=5
+
+:::details 代码
+```go
 // 方案1：缓存空值（简单有效）
 func GetUser(uid int) (*User, error) {
     // 1. 查缓存
@@ -70,13 +72,17 @@ func GetUser(uid int) (*User, error) {
     return user, nil
 }
 ```
+:::
+
 
 - ==布隆过滤器==
 1. 在应用启动时，将所有合法的ID加载到布隆过滤器
 2. 每次请求时，先通过布隆过滤器判断ID是否存在
 3. 如果布隆过滤器判断不存在，直接返回空结果，避免查询数据库
 4. 如果布隆过滤器判断存在，再继续查缓存和数据库
-```go :collapsed-lines=5
+
+:::details 代码
+```go 
 // 在应用启动时，将所有user_id加载到布隆过滤器
 var bf *bloom.BloomFilter
 
@@ -102,6 +108,8 @@ func GetUser(uid int) (*User, error) {
     // 后续逻辑同上...
 }
 ```
+:::
+
 
 :::
 
@@ -126,7 +134,9 @@ Redis都未命中 → 1000个请求都去查MySQL
 2. 获取分布式锁，防止缓存重建时的并发请求（只允许一个请求去查数据库）
 3. 获取到锁的请求，查数据库，回写缓存，释放锁
 4. 未获取到锁的请求，等待一段时间后重试
-```go :collapsed-lines=5
+
+:::details 代码
+```go 
 // 方案1：互斥锁（推荐）
 func GetProduct(pid int) (*Product, error) {
     cacheKey := fmt.Sprintf("product:%d", pid)
@@ -179,13 +189,17 @@ func GetProduct(pid int) (*Product, error) {
     return &product, nil
 }
 ```
+:::
+
 
 - ==逻辑过期（适合极端热点）==
 1. 缓存中存储数据和逻辑过期时间
 2. 查缓存，命中后检查逻辑过期时间
 3. 如果未过期，直接返回数据
 4. 如果已过期，返回旧数据，并异步启动协程更新缓存
-```go :collapsed-lines=5
+
+:::details 代码
+```go 
 type CacheData struct {
     Data      string    `json:"data"`
     ExpireAt  time.Time `json:"expire_at"`
@@ -232,6 +246,8 @@ func GetProductWithLogicExpire(pid int) (*Product, error) {
     return unmarshal(cached.Data), nil
 }
 ```
+:::
+
 
 :::
 
@@ -256,7 +272,8 @@ func GetProductWithLogicExpire(pid int) (*Product, error) {
 ::: details 解法
 
 - ==过期时间加随机值==
-```go :collapsed-lines=5
+:::details 代码
+```go 
 // 方案1：过期时间加随机值
 func SetCacheWithRandomExpire(key string, value interface{}) error {
     data, _ := json.Marshal(value)
@@ -267,9 +284,12 @@ func SetCacheWithRandomExpire(key string, value interface{}) error {
     return rdb.Set(ctx, key, data, baseExpire+randomExpire).Err()
 }
 ```
+:::
+
 
 - ==热点数据永不过期（配合逻辑过期）==
-```go :collapsed-lines=5
+:::details 代码
+```go 
 // 方案2：热点数据永不过期（配合逻辑过期）
 func SetHotCache(key string, value interface{}) error {
     cached := CacheData{
@@ -280,22 +300,25 @@ func SetHotCache(key string, value interface{}) error {
     return rdb.Set(ctx, key, data, 0).Err() // TTL为0，永不过期
 }
 ```
+:::
+
 
 - ==多级缓存==
-```go :collapsed-lines=5
+:::details 代码
+```go 
 // 方案3：多级缓存
 type CacheManager struct {
-    localCache *bigcache.BigCache // 本地缓存
-    redis      *redis.Client       // Redis缓存
-    db         *gorm.DB           // 数据库
+localCache *bigcache.BigCache // 本地缓存
+redis      *redis.Client       // Redis缓存
+db         *gorm.DB           // 数据库
 }
 
 func (m *CacheManager) Get(key string) (string, error) {
-    // L1: 本地缓存（进程内，微秒级）
-    if val, err := m.localCache.Get(key); err == nil {
-        return string(val), nil
-    }
-    
+// L1: 本地缓存（进程内，微秒级）
+if val, err := m.localCache.Get(key); err == nil {
+return string(val), nil
+}
+
     // L2: Redis（毫秒级）
     if val, err := m.redis.Get(ctx, key).Result(); err == nil {
         m.localCache.Set(key, []byte(val))
@@ -314,9 +337,12 @@ func (m *CacheManager) Get(key string) (string, error) {
 }
 
 ```
+:::
+
 
 - ==熔断降级（Redis挂了也能撑住）==
-```go :collapsed-lines=5
+:::details 代码
+```go 
 // 方案4：熔断降级（Redis挂了也能撑住）
 import "github.com/sony/gobreaker"
 
@@ -348,5 +374,7 @@ func GetWithCircuitBreaker(key string) (string, error) {
     return val.(string), err
 }
 ```
+:::
+
 
 :::

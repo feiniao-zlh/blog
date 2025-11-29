@@ -7,7 +7,8 @@ createTime: 2025/11/23 16:18:01
 permalink: /blog/skip_list/
 ---
 ## 跳表结构
-```ts ts:no-line-numbers :collapsed-lines=5
+:::details
+```ts ts:no-line-numbers
 // 0
 Level 0: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8 → 9 → 10
 
@@ -46,13 +47,16 @@ Level 0: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8 → 9 → 10
 │ Level 0: ─→ │  指向下一个Level 0节点（原始链表）
 └─────────────┘
 ```
+:::
+
 - 每个节点有多个"层级"
 - 层级越高，跨度越大 
 - 每个节点的层级是随机决定的 
 - 所有节点都在Level 0（保证完整性）
 
 ## 查找逻辑
-```ts ts:no-line-numbers :collapsed-lines=5
+:::details
+```ts ts:no-line-numbers 
 Level 3: 1 -------------------→ 9 → NULL
          ↓                       ↓
 Level 2: 1 -----------→ 5 ---→ 9 → NULL
@@ -83,7 +87,8 @@ Level 0: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8 → 9 → 10 → NULL
 
 总共比较了4次，而不是遍历7个节点！
 ```
-```ts ts:no-line-numbers :collapsed-lines=5
+
+```ts ts:no-line-numbers
 // 伪代码逻辑
 查找target的过程：
 
@@ -96,10 +101,14 @@ Level 0: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8 → 9 → 10 → NULL
    - 找到target（返回节点）
    - 或者到达Level 0且找不到（返回NULL）
 ```
+:::
+
+
 
 ### 时间复杂度
+:::details
 假设有n个元素：
-```ts ts:no-line-numbers :collapsed-lines=5
+```ts ts:no-line-numbers
 Level 0：n个节点
 Level 1：n/2个节点（每隔1个）
 Level 2：n/4个节点（每隔2个）
@@ -109,6 +118,7 @@ Level k：n/(2^k)个节点
 
 最高层：当n/(2^k) = 1时，k = log₂(n)
 ```
+:::
 
 查找过程：
 - 最多遍历log₂(n)层
