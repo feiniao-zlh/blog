@@ -77,6 +77,7 @@ permalink: /blog/network/
 - **三次挥手**后服务器可能还有数据要发，不可强制结束
 :::
 
+
 :::details ==详细过程==
 ```ts ts:no-line-numbers
 场景：客户端要关闭连接
