@@ -1,4 +1,4 @@
-import { defineClientConfig } from 'vuepress/client'
+import {defineClientConfig} from 'vuepress/client'
 // import 'vuepress-theme-plume/client'
 // import RepoCard from 'vuepress-theme-plume/features/RepoCard.vue'
 // import NpmBadge from 'vuepress-theme-plume/features/NpmBadge.vue'
@@ -10,14 +10,21 @@ import { defineClientConfig } from 'vuepress/client'
 import './theme/styles/custom.css'
 
 export default defineClientConfig({
-  enhance({ app }) {
-    // built-in components
-    // app.component('RepoCard', RepoCard)
-    // app.component('NpmBadge', NpmBadge)
-    // app.component('NpmBadgeGroup', NpmBadgeGroup)
-    // app.component('Swiper', Swiper) // you should install `swiper`
-
-    // your custom components
-    // app.component('CustomComponent', CustomComponent)
-  },
+    enhance({app}) {
+        // built-in components
+        // app.component('RepoCard', RepoCard)
+        // app.component('NpmBadge', NpmBadge)
+        // app.component('NpmBadgeGroup', NpmBadgeGroup)
+        // app.component('Swiper', Swiper) // you should install `swiper`
+        // 强制客户端激活，避免 collapsed-lines 在 mobile 上初始化失败
+        app.mixin({
+            mounted() {
+                if (typeof window !== 'undefined') {
+                    window.dispatchEvent(new Event('scroll'))
+                }
+            }
+        })
+        // your custom components
+        // app.component('CustomComponent', CustomComponent)
+    },
 })
