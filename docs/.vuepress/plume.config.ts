@@ -20,10 +20,6 @@ import collections from './collections'
 export default defineThemeConfig({
     logo: 'https://theme-plume.vuejs.press/plume.png',
 
-    sidebar: {
-        mobile: 'group'
-    },
-
     appearance: true,  // 配置 深色模式
 
     social: [
