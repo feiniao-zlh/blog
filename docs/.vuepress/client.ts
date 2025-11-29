@@ -16,14 +16,14 @@ export default defineClientConfig({
         // app.component('NpmBadge', NpmBadge)
         // app.component('NpmBadgeGroup', NpmBadgeGroup)
         // app.component('Swiper', Swiper) // you should install `swiper`
-        // 强制客户端激活，避免 collapsed-lines 在 mobile 上初始化失败
-        app.mixin({
-            mounted() {
-                if (typeof window !== 'undefined') {
-                    window.dispatchEvent(new Event('scroll'))
-                }
-            }
-        })
+        // // 强制客户端激活，避免 collapsed-lines 在 mobile 上初始化失败
+        // app.mixin({
+        //     mounted() {
+        //         if (typeof window !== 'undefined') {
+        //             window.dispatchEvent(new Event('scroll'))
+        //         }
+        //     }
+        // })
         // your custom components
         // app.component('CustomComponent', CustomComponent)
     },
