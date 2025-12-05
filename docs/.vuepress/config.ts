@@ -16,7 +16,7 @@ import { plumeTheme } from 'vuepress-theme-plume'
 export default defineUserConfig({
   base: '/',
   lang: 'zh-CN',
-  title: '二期小屁孩',
+  title: 'a person',
   description: '自由的灵魂永不困顿于荆棘',
 
   head: [

@@ -50,7 +50,7 @@ export default defineThemeConfig({
      */
     profile: {
         avatar: '/img/logo.png',
-        name: '二期小屁孩',
+        name: 'a person',
         description: '自由的灵魂永不困顿于荆棘',
         // circle: true,
         // location: '',
