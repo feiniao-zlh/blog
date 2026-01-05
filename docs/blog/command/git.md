@@ -12,6 +12,9 @@ permalink: /blog/tw4c84lt/
 # 本地添加分支
 git switch -c <branch-name> = git checkout -b <branch-name>
 
+# 删除本地分支
+git branch -d <branch-name>
+
 # 新建远程分支 推送 绑定
 git push -u origin <branch-name>
 
