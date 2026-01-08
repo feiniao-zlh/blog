@@ -9,6 +9,9 @@ permalink: /blog/tw4c84lt/
 
 ## branch
 ```bash
+# 无仓库 拉取指定分支 
+git clone -b <branch-name> --single-branch <repo-url>
+
 # 本地添加分支
 git switch -c <branch-name> = git checkout -b <branch-name>
 
@@ -31,9 +34,13 @@ git reset --hard HEAD~x  # 删除提交历史 工作区变化 回滚到历史提
 
 ## merge
 ```bash
-# merge a to b
-# git switch b
-# merge前 先提交b
+# 拉远端最新代码
+git fetch orign
+
+# 合并 会生成一个新的merge commit
+git merge --no-ff <branch-name-a>
+
+# fast合并模式 不保留原分支痕迹
 git merge <branch-name-a>
 
 # 解决冲突
