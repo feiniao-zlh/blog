@@ -57,6 +57,12 @@ git commit
 
 ```
 
+# remote
+```bash
+# 查看远程仓库
+git remote -v
+```
+
 ## diff
 ```bash
 git diff  # 暂存区和工作区 差别
